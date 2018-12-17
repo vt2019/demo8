@@ -17,7 +17,7 @@ pipeline {
         container('s2i') {
           sh "s2i build . pingworks/demo-builder:2 ${APP_NAME}:${RELEASE_VERSION} --copy"
         }
-        container('docker') {
+        container('s2i') {
           sh "docker push ${APP_NAME}:${RELEASE_VERSION}"
         }
       }
